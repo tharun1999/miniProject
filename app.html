@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Face Emotion Recogniser</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script defer src="./scripts/connection.js"></script>
+  <script defer src="./scripts/face-api.min.js"></script>
+  <script defer src="./scripts/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body {
+      background-image: url("./public/images/background.jpg");
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center;
+      background-repeat: repeat;
+    }
+
+    canvas {
+      position: absolute;
+    }
+  </style>
+</head>
+    
+<body>
+  <div class="shadow p-3 mb-5 bg-white rounded">
+    <div class="jumbotron" style="background-color:#ffffFF">
+    
+      <div class="container" style="padding-top: 100px;">
+        <h1 class="display-4">FACIAL EXPRESSION RECOGNITION </h1>
+        
+        <video id="video" autoplay muted></video>
+        <canvas id="myCanvas"></canvas>
+        <h2>Predictions:</h2>
+        <div id="whichMode"> Real Time Mode</div><br>
+        <button type="button" class="btn btn-outline-info"
+        data-toggle="modal" data-target="#helpModal"><i class="fa fa-info-circle"></i></button>
+        &nbsp;
+        <button type="button" id="mode" class="btn btn-success">Change mode</button>
+        <button type="button" id="capture" class="btn btn-primary" disabled>Capture</button>
+
+        <br>
+        <table class="table" id="answer" >
+          <thead>
+
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Emoji Helper</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Emotion</th>
+                      <th>Emoji</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Happy</td>
+                      <td><img src="./public/images/happy.svg" height="30" width="30" /></td>
+                    </tr>
+                    <tr>
+                      <td>Sad</td>
+                      <td><img src="./public/images/sad.svg" height="30" width="30" /></td>
+                    </tr>
+                    <tr>
+                      <td>Surprise</td>
+                      <td><img src="./public/images/surprised.svg" height="30" width="30" /></td>
+                    </tr>
+                    <tr>
+                      <td>Angry</td>
+                      <td><img src="./public/images/angry.svg" height="30" width="30" /></td>
+                    </tr>
+                    <tr>
+                      <td>Neutral</td>
+                      <td><img src="./public/images/neutral.svg" height="30" width="30" /></td>
+                    </tr>
+                    <tr>
+                      <td>No Face Detected/Failed</td>
+                      <td><img src="./public/images/brain.svg" height="30" width="30" /></td>
+                    </tr>
+                  </tbody>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
